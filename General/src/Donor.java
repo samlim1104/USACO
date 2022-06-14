@@ -61,6 +61,8 @@ public class Donor {
 					else{System.out.print(thisYear.get(a) + ",");}
 				}
 				System.out.println();
+				
+				
 			}
 			else if(lastYear.size() > thisYear.size()) {
 				shortest = thisYear.size();
@@ -99,6 +101,8 @@ public class Donor {
 					else{System.out.print(thisYear.get(a) + ",");}
 				}
 				System.out.println();
+				
+				
 			}
 			else if(lastYear.size() < thisYear.size()) {
 				shortest = lastYear.size();
