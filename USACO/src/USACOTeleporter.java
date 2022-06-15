@@ -1,5 +1,5 @@
 import java.io.*;
-public class Teleporter {
+public class USACOTeleporter {
 	
 	public static void main(String[] args) throws IOException {
 		
