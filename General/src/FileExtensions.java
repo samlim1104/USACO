@@ -9,7 +9,9 @@ public class FileExtensions {
 			boolean r = false;
 			String[] n = in.nextLine().split(".");
 			
-			if(i==0) files.add(n[1]);
+			if(i==0) {
+				files.add(n[1]);
+			}
 			
 			else{
 				for(int a = 0; a<files.size(); a++) {
