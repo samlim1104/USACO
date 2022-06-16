@@ -18,15 +18,18 @@ public class BrickHouse {
 			
 			int totalNumOfFives = numOfFives * 5;
 			
-			if(totalNumOfFives >= goal) {
+			if(goal == 0) {
+				System.out.println(true);
+			}
+			else if(totalNumOfFives >= goal) {
 				if(goal % 5 <= numOfOnes) {
 					System.out.println(true);
 				}
+				else {
+					System.out.println(false);
+				}
 			}
-			else if(goal % 5 <= numOfOnes) {
-				System.out.println(true);
-			}
-			else if(goal == 0) {
+			else if(goal - totalNumOfFives <= numOfOnes) {
 				System.out.println(true);
 			}
 			else {

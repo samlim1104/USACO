@@ -6,31 +6,43 @@ public class ChangeWorld {
 		int testCases = Integer.parseInt(in.nextLine());
 		
 		for(int i = 0; i<testCases; i++) {
+			
 			String w = in.nextLine();
+			String[] word = new String[2];
+			word[0] = w.substring(1, w.indexOf("."));
+			word[1] = w.substring(w.indexOf(".") + 1, w.length());
 			
-			double a = Double.parseDouble(w.substring(1, w.length()));
-			double dollars = a;
-			int amount = (int) (a * 100);
+			String dollars = word[0] + "." + word[1];
 			
-			int quarters = amount / 25;
+			int bucks = Integer.parseInt(word[0]);
 			
-			amount = amount % 25;
+			int cents = bucks * 100 + Integer.parseInt(word[1]);
 			
-			int dimes = amount / 10;
+			int quarters = 0;
+			int dimes = 0;
+			int nickels = 0;
+			int pennies = 0;
+			 
+			quarters = cents / 25;
 			
-			amount = amount % 10;
+			cents = cents % 25;
 			
-			int nickels = amount / 5;
+			dimes = cents / 10;
 			
-			amount = amount % 5;
+			cents = cents % 10;
 			
-			int penny = amount;
+			nickels = cents /5;
+			
+			cents = cents%5;
+			
+			pennies = cents;
 			
 			System.out.println("$" + dollars);
 			System.out.println("Quarters=" + quarters);
 			System.out.println("Dimes=" + dimes);
 			System.out.println("Nickels=" + nickels);
-			System.out.println("Pennies=" + penny);
+			System.out.println("Pennies=" + pennies);
+			
 		}
 	}
 }

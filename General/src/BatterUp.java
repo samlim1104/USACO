@@ -17,10 +17,10 @@ public class BatterUp {
 			
 			int totalAtBats = 0;
 			int totalSLG = 0;
-			
+				
 			for(int s = 0; s<atBats.length; s++) {
 				if(atBats[s].equals("K")) {
-					totalAtBats++;
+						totalAtBats++;
 				}
 				else if(atBats[s].equals("1B")) {
 					totalAtBats++;
@@ -56,6 +56,6 @@ public class BatterUp {
 	}
 	
 	public static String roundDecimalUsingBigDecimal(String strValue, int decimalPlace) {
-	    return new BigDecimal(strValue).setScale(decimalPlace, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString();
+	    return new BigDecimal(strValue).setScale(decimalPlace, RoundingMode.HALF_UP).toPlainString();
 	  }
 }
