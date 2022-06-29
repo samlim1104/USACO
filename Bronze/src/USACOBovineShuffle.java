@@ -7,36 +7,26 @@ public class USACOBovineShuffle {
 		
 		int N = in.nextInt();
 		
+		int[] shuffle = new int[N];
 		int[] order = new int[N];
-		int[] id = new int[N];
+		int[] newOrder = new int[N];
+		
+		for(int i = 0; i<N; i++) {
+			shuffle[i] = in.nextInt();
+		}
 		
 		for(int i = 0; i<N; i++) {
 			order[i] = in.nextInt();
 		}
 		
-		for(int i = 0; i<N; i++) {
-			id[i] = in.nextInt();
-		}
-		
-		int count = 1;
+		for(int i = 0; i<3; i++) {
 		for(int a = 0; a<N; a++) {
-			int t = 0;
-			int c = 0;
-			for(int b = 0; b<N; b++) {
-				if(order[b] == count) {
-					t = id[b];
-					id[b] = id[a];
-					id[a] = t;
-					
-					c = order[b];
-					order[b] = order[a];
-					order[a] = c;
-				}
-			}
-			count++;
+			newOrder[a] = order[shuffle[a]-1];
+		}
+		order = newOrder.clone();
 		}
 		
-		for(int f : id) {
+		for(int f : newOrder) {
 			out.println(f);
 		}
 		
