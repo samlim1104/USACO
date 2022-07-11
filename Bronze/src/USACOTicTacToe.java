@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.io.*;
 public class USACOTicTacToe {
 	public static void main(String[] args) throws IOException{
 		Scanner in = new Scanner(new FileReader("tttt.in"));
@@ -14,36 +15,58 @@ public class USACOTicTacToe {
 			board[a] = in.nextLine().split("");
 		}
 		
-		for(int i = 0; i<3; i++) {
-			if(board[i][0].equals(board[i][1]) && board[i][0].equals(board[i][2])) {
+		ArrayList<ArrayList<String>> result = new ArrayList<>();
+		
+		for(int a = 0; a<3; a++) {
+			ArrayList<String> ss = new ArrayList<>();
+			for(int b = 0; b<3; b++) {
+				if(!ss.contains(board[a][b])) {
+					ss.add(board[a][b]);
+				}
+			}
+			result.add(ss);
+		}
+		
+		for(int a = 0; a<3; a++) {
+			ArrayList<String> ss = new ArrayList<>();
+			for(int b = 0; b<3; b++) {
+				if(!ss.contains(board[b][a])) {
+					ss.add(board[b][a]);
+				}
+			}
+			result.add(ss);
+		}
+		ArrayList<String> sss = new ArrayList<>();
+		for(int r = 0; r<3; r++) {
+
+			if(!sss.contains(board[r][r])) {
+				sss.add(board[r][r]);
+			}
+		}
+		
+		result.add(sss);
+		
+		ArrayList<String> ssss = new ArrayList<>();
+		for(int r = 0; r<3; r++) {
+			if(!ssss.contains(board[r][2-r])) {
+				ssss.add(board[r][2-r]);
+			}
+		}
+		
+		result.add(ssss);
+		
+		ArrayList<ArrayList<String>> temp = new ArrayList<>();
+		
+		for(ArrayList<String> j : result) {
+			Collections.sort(j);
+			if(j.size() == 1 && !temp.contains(j)) {
 				count1++;
+				temp.add(j);
 			}
-			else if(board[i][0].equals(board[i][1]) || board[i][0].equals(board[i][2]) || board[i][1].equals(board[i][2])) {
+			else if(j.size() == 2 && !temp.contains(j)) {
 				count2++;
+				temp.add(j);
 			}
-		}
-		
-		for(int i = 0; i<3; i++) {
-			if(board[0][i].equals(board[1][i]) && board[0][i].equals(board[2][i])) {
-				count1++;
-			}
-			else if(board[0][i].equals(board[1][i]) || board[0][i].equals(board[2][i]) || board[1][i].equals(board[2][i])) {
-				count2++;
-			}
-		}
-		
-		if(board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2])) {
-			count1++;
-		}
-		else if(board[0][0].equals(board[1][1]) || board[0][0].equals(board[2][2]) || board[1][1].equals(board[2][2])) {
-			count2++;
-		}
-		
-		if(board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0])) {
-			count1++;
-		}
-		else if(board[0][2].equals(board[1][1]) || board[0][2].equals(board[2][0]) || board[1][1].equals(board[2][0])) {
-			count2++;
 		}
 		
 		out.println(count1);
