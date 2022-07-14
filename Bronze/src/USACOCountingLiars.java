@@ -5,36 +5,28 @@ public class USACOCountingLiars {
 		Scanner in = new Scanner(System.in);
 		
 		int N = Integer.parseInt(in.nextLine());
+
+		int ans = N;
 		
-		int min = Integer.MIN_VALUE;
-		int max = Integer.MAX_VALUE;
+		ArrayList<String> name = new ArrayList<>();
+		ArrayList<Integer> value = new ArrayList<>();
 		
-		int count = 0;
-		
-		for(int i = 0; i<N; i++) {
-			String[] pp = in.nextLine().split(" ");
-			
-			String p = pp[0];
-			int v = Integer.parseInt(pp[1]);
-			
-			if(p.equals("G")) {
-				if(v > max) {
-					count++;
-				}
-				else {
-					min = v;
-				}
-			}
-			if(p.equals("L")) {
-				if(v < min) {
-					count++;
-				}
-				else {
-					max = v;
-				}
-			}
+		for(int q = 0; q<N; q++) {
+			String[] f = in.nextLine().split(" ");
+			name.add(f[0]);
+			value.add(Integer.parseInt(f[1]));
 		}
 		
-		System.out.println(count);
+		for(int i = 0; i<N; i++) {
+			int count = 0;
+			for(int j = 0; j<N; j++) {
+				if((name.get(j).equals("L") && value.get(i) > value.get(j)) || (name.get(j).equals("G") && value.get(i) < value.get(j))) {
+					count++;
+				}
+			}
+			ans = Math.min(ans, count);
+		}
+		
+		System.out.println(ans);
 	}
 }
