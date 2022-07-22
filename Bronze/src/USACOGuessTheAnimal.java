@@ -3,47 +3,47 @@ import java.io.*;
 
 public class USACOGuessTheAnimal {
 	public static void main(String[] args) throws IOException {
-		Scanner in = new Scanner(new FileReader("input.txt"));
-		PrintWriter out = new PrintWriter("output.txt");
+		Scanner in = new Scanner(new FileReader("guess.in"));
+		PrintWriter out = new PrintWriter("guess.out");
 		
 		int n = Integer.parseInt(in.nextLine());
 		
 		String[] animals = new String[n];
-		int[] numc = new int[n];
 		
-		int[] charac = new int[26];
-		ArrayList<String> ch = new ArrayList<>();
+		ArrayList<ArrayList<String>> charac = new ArrayList<>();
 		
 		for(int i =0; i<n; i++) {
 			animals[i] = in.next();
 			
 			int c = in.nextInt();
-			numc[i] = c;
+			
+			ArrayList<String> f = new ArrayList<>();
 			
 			for(int r = 0; r<c; r++) {
-				String cha = in.next();
-				
-				charac[cha.charAt(0) - 97]++;
-				ch.add(cha);
+				f.add(in.next());
 			}
+			
+			charac.add(f);
 		}
 		
 		int max = 0;
 		
-		for(int a = 0; a<n; a++) {
-			int temp = 0;
-			int y = numc[a];
-			for(int j =0; j<y; j++) {
-				System.out.println(charac[ch.get(j).charAt(0) - 97]);
-				if(charac[ch.get(j).charAt(0) - 97] > 1) {
-					temp++;
+		for(int h = 0; h<n-1; h++) {
+			for(int w = h+1; w<n; w++) {
+				int count = 0;
+				for(int d = 0; d<charac.get(h).size(); d++) {
+					if(charac.get(w).contains(charac.get(h).get(d))) {
+						count++;
+					}
 				}
-				y--;
-				j--;
+				
+				max = Math.max(max, count+1);
 			}
-			max = Math.max(temp+1, max);
 		}
 		
-		System.out.println(max);
+		out.println(max);
+		
+		in.close();
+		out.close();
 	}
 }
