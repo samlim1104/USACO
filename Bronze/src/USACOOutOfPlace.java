@@ -24,7 +24,6 @@ public class USACOOutOfPlace {
 				count++;
 			}
 		}
-		//
 		
 		
 		out.println(count-1);
