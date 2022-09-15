@@ -53,15 +53,52 @@ public class ACSLNinetyNine {
 						}
 					}
 					
-					stack += max;
-					
 					player[ind] = array[r];
-					
-					playerTurn = false;
+				
+					if(max == 9) {
+						playerTurn = false;
+						continue;
+					}
+					else if(max == 10) {
+						stack -= 10;
+						playerTurn = false;
+					}
+					else if(max == 14) {
+						if(stack + 14 > 99) {
+							stack++;
+						}
+						else {
+							stack += 14;
+						}
+						playerTurn = false;
+					}
+					else {
+						stack += max;
+						playerTurn = false;
+					}
 				}
 				else if(!playerTurn && stack<=99){
-					stack += array[r];
-					playerTurn = true;
+					if(array[r] == 9) {
+						playerTurn = true;
+						continue;
+					}
+					else if(array[r] == 10) {
+						stack -= 10;
+						playerTurn = true;
+					}
+					else if(array[r] == 14) {
+						if(stack + 14 > 99) {
+							stack++;
+						}
+						else {
+							stack += 14;
+						}
+						playerTurn = true;
+					}
+					else {
+						stack += array[r];
+						playerTurn = true;
+					}
 				}
 			}
 			
