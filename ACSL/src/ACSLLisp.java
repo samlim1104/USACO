@@ -107,22 +107,20 @@ public class ACSLLisp {
 				System.out.println(result);
 			}
 			else if(i == 4) {
-				String result = "";
+				String result = input[0] + " " + input[1];
 				
-				String other = "'(";
+				int index = Integer.parseInt(input[input.length-1].substring(0,1));
 				
-				int index = Integer.parseInt(input[input.length-1].substring(0,1 ));
-				
-				for(int r = 0; r<input.length-1; r+=2) {
-					if(r == index*2-1) {
-						result += input[r] + " " + input[r+1] + ") '( ";
+				for(int r = 2; r<input.length-1; r+=2) {
+					if(r == index*2) {
+						result += ") '(" + input[r] + " " + input[r+1];
 					}
 					else {
-						result += input[r] + " " + input[r+1] + " ";
+						result += " " + input[r] + " " + input[r+1];
 					}
 				}
 				
-				result += other + index + ")";
+				result += " " + index + ")";
 				
 				System.out.println(result);
 			}
