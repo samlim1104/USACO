@@ -15,56 +15,85 @@ public class ACSLDraftPicks {
 			int s = Integer.parseInt(a[0]);
 			double sal = Double.parseDouble(a[1]);
 			
-			sal /= s;
-			
 			season.add(s);
 			salary.add(sal);
 		}
 		
-		double tot5 = 0;
-		double tot6 = 0;
-		int num5 = 0;
-		int num6 = 0;
+		double avg = 0;
 		
-		int maxSal = 0;
+		double[] avgSal = new double[10];
 		
-		double max = 0;
-		int maxIndex = 0;
+		for(int r = 0; r<10; r++) {
+			avgSal[r] = salary.get(r) / season.get(r);
+		}
 		
-		for(int i = 0; i<n; i++) {
-			if(season.get(i) == 5) {
-				tot5+= salary.get(i);
-				num5++;
-			}
-			else {
-				tot6+=salary.get(i);
-				num6++;
-			}
-			
-			maxSal+=salary.get(i);
-			
-			if(salary.get(i) > max) {
-				max = salary.get(i);
-				maxIndex = i;
+		double largest = 0;
+		int index = 0;
+		
+		for(int r = 0; r<10; r++) {
+			if(avgSal[r] > largest) {
+				largest = avgSal[r];
+				index = r;
 			}
 		}
-	
-		maxSal /=10;
-		maxSal = maxSal * 1000000;
 		
-		double av5 = (tot5/num5);
-		double av6 = (tot6/num6);
+		for(int r =0; r<10; r++) {
+			avg += avgSal[r];
+		}
 		
-		int averageDiff = (int) (Math.abs(av5-av6)) * 1000000;
+		avg = avg/10;
 		
-		max = max * 1000000;
+		double[] game16 = new double[10];
 		
-		Collections.sort(salary);
+		for(int r = 0; r<10; r++) {
+			game16[r] = avgSal[r] / 16;
+		}
 		
-		System.out.println((maxSal));
-		System.out.println(Math.round(max) + " by " + "#" + (maxIndex + 1));
+		double highest= 0;
+		double lowest = 10000;
 		
+		for(int r= 0; r<10; r++) {
+			if(game16[r] > highest) {
+				highest = game16[r];
+			}
+			else if(game16[r] < lowest) {
+				lowest = game16[r];
+			}
+		}
 		
-		System.out.println(Math.round(averageDiff));
+		double[] game18 = new double[10];
+		
+		for(int r = 0; r<10; r++) {
+			game18[r] = avgSal[r] / 18;
+		}
+		
+		double h= 0;
+		double l = 10000;
+		
+		for(int r= 0; r<10; r++) {
+			if(game18[r] > h) {
+				h = game18[r];
+			}
+			else if(game18[r] < l) {
+				l = game18[r];
+			}
+		}
+		
+		double avg16 = 0;
+		double avg18 = 0;
+		
+		for(int r = 0; r<10; r++) {
+			avg16 += game16[r];
+			avg18 += game18[r];
+		}
+		
+		avg16 = avg16/10;
+		avg18 = avg18/10;
+		
+		System.out.println(avg * 1000000);
+		System.out.println(largest * 1000000 + " by #" + index);
+		System.out.println((highest - lowest) * 1000000);
+		System.out.println((h + l)/2 * 1000000);
+		System.out.println(Math.abs(avg18 - avg16) * 1000000);
 	}
 }
