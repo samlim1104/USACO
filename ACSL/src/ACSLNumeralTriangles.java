@@ -1,5 +1,5 @@
 import java.util.*;
-public class ACLSNumeralTriangles {
+public class ACSLNumeralTriangles {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		
