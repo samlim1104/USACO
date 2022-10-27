@@ -73,11 +73,11 @@ public class ACSLChmod {
 			String[] input = in.nextLine().split(", ");
 			
 			String a = input[0];
-			int aa = Integer.parseInt(a, 10);
+			int aa = Integer.parseInt(a, 2);
 			String b = input[1];
-			int bb = Integer.parseInt(b, 10);
+			int bb = Integer.parseInt(b, 2);
 			String c = input[2];
-			int cc = Integer.parseInt(c, 10);
+			int cc = Integer.parseInt(c, 2);
 			
 			String aaa = "";
 			String bbb = "";
@@ -132,7 +132,48 @@ public class ACSLChmod {
 				}
 			}
 			
-			System.out.println("" + a + b + c + " and " + aaa + " " + bbb + " " + ccc);
+			System.out.println("" + aa + bb + cc + " and " + aaa + " " + bbb + " " + ccc);
 		}
+		
+		String[] input = in.nextLine().split(", ");
+			
+			String aa = "";
+			String bb = "";
+			String cc = "";
+			
+			String a = input[0];
+			String b = input[1];
+			String c = input[2];
+			
+			for(int r = 0; r<3; r++) {
+				if(!a.substring(r, r+1).equals("-")) {
+					aa += "1";
+				}
+				else {
+					aa += "0";
+				}
+			}
+			for(int r = 0; r<3; r++) {
+				if(!b.substring(r, r+1).equals("-")) {
+					bb += "1";
+				}
+				else {
+					bb += "0";
+				}
+			}
+			for(int r = 0; r<3; r++) {
+				if(!c.substring(r, r+1).equals("-")) {
+					cc += "1";
+				}
+				else {
+					cc += "0";
+				}
+			}
+			
+			int aaa = Integer.parseInt(aa, 2);
+			int bbb = Integer.parseInt(bb, 2);
+			int ccc = Integer.parseInt(cc, 2);
+			
+			System.out.println("" + aaa + bbb + ccc + " and " + aa + " " + bb + " " + cc);
 	}
 }
