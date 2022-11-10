@@ -38,6 +38,45 @@ public class ACSLStrings {
 		System.out.println(i3[0].substring(0, n));
 		
 		String[] i4 = in.nextLine().split(", ");
-		dd;
+		
+		String result = i4[0].substring(0, 1);
+		
+		for(int i = 1; i<i4[0].length(); i++) {
+			if(i4[0].substring(i, i+1).equals(i4[1])) {
+				result += " " + i4[0].substring(i, i+1);
+			}
+			else {
+				result += i4[0].substring(i, i+1);
+			}
+		}
+		
+		System.out.println(result);
+		
+		String[] i5 = in.nextLine().split(", ");
+		
+		int max = Integer.parseInt(i5[1]);
+		
+		int count = 1;
+
+		String rrr = i5[0].substring(0,1);
+		
+		for(int i = 1; i<i5[0].length(); i++) {
+			if(count < max) {
+				if(i5[0].substring(i, i+1).equals(i5[2])) {
+					rrr += " " + i5[0].substring(i, i+1);
+					count = 1;
+				}
+				else {
+					rrr += i5[0].substring(i, i+1);
+					count++;
+				}
+			}
+			else {
+				rrr += " " + i5[0].substring(i, i+1);
+				count = 0;
+			}
+		}
+		
+		System.out.println(rrr);
 	}
 }
